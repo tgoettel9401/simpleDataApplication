@@ -1,0 +1,18 @@
+<div th:insert="main.html"></div>
+<body>
+<div class="container-fluid" style="margin-top: 10px">
+    <h1 th:if="${student.getId() != null}" th:text="${student.getName()}"></h1>
+    <h1 th:if="${student.getId() == null}">Create new student</h1>
+
+    <form th:action="@{'/students/save'}" th:object="${student}" method="post">
+        <input type="hidden" name="id" th:value="${student.getId()}">
+        Firstname: <input type="text" class="input-group" name="firstName" th:value="${student.getFirstName()}"><br>
+        Lastname: <input type="text" class="input-group" name="lastName" th:value="${student.getLastName()}"> <br>
+        Birthday: <input type="date" class="input-group" name="birthday" th:value="${student.getBirthday()}"> <br>
+        <a th:href="@{/students}"><input type="button" class="btn btn-warning" value="Cancel"></a>
+        <input type="submit" class="btn btn-primary" value="Save"> <br>
+    </form>
+    <div th:insert="footer.html">
+    </div>
+</div>
+</body>

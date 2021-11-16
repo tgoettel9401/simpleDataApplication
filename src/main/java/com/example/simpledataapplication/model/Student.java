@@ -1,5 +1,7 @@
 package com.example.simpledataapplication.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,7 +16,13 @@ public class Student implements Serializable {
 
     private String firstName;
     private String lastName;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
+
+    public String getName() {
+        return lastName + ", " + firstName;
+    }
 
     public Long getId() {
         return id;
