@@ -20,36 +20,35 @@ public class StudentController {
     }
 
     @GetMapping()
-    public String showAll(Model model) {
+    public String index(Model model) {
         model.addAttribute("students", studentRepository.findAll());
         return "students";
     }
 
     @GetMapping("/create")
-    public String showCreate(Model model) {
+    public String create(Model model) {
         Student student = new Student();
         model.addAttribute("student", student);
         return "studentDetails";
     }
 
     @GetMapping("/edit/{id}")
-    public String showDetails(Model model, @PathVariable("id") Long studentId) throws NotFoundException {
+    public String update(Model model, @PathVariable("id") Long studentId) throws NotFoundException {
         Student student = studentRepository.findById(studentId).orElseThrow(() -> new NotFoundException("Student", studentId));
         model.addAttribute("student", student);
         return "studentDetails";
     }
 
     @PostMapping("save")
-    public RedirectView saveCreate(@ModelAttribute Student student) {
+    public RedirectView save(@ModelAttribute Student student) {
         studentRepository.save(student);
         return new RedirectView("/students");
     }
 
     @GetMapping("/delete/{id}")
-    public RedirectView deleteStudent(RedirectAttributes attributes, @PathVariable("id") Long studentId, @RequestParam("edit") Boolean isEdit) {
+    public RedirectView delete(RedirectAttributes attributes, @PathVariable("id") Long studentId) {
         studentRepository.deleteById(studentId);
-        attributes.addAttribute("edit", isEdit);
         return new RedirectView("/students");
     }
-    
+
 }

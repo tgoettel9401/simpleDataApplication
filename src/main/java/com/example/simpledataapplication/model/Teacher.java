@@ -16,6 +16,10 @@ public class Teacher {
     @OneToMany
     private List<Course> courses;
 
+    public String getName() {
+        return lastName + ", " + firstName;
+    }
+
     public Long getId() {
         return id;
     }
@@ -30,5 +34,13 @@ public class Teacher {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

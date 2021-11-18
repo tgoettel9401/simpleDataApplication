@@ -2,24 +2,22 @@
 <div th:insert="main.html"></div>
 <body>
 <div class="container-fluid" style="margin-top: 10px">
-    <h1>Students</h1> <br>
-    <a th:href="@{/students/create}"><input type="button" class="btn btn-primary" value="New" style="margin-bottom: 10px"></a>
+    <h1>Teachers</h1> <br>
+    <a th:href="@{/teachers/create}"><input type="button" class="btn btn-primary" value="New" style="margin-bottom: 10px"></a>
     <table class="table table-bordered">
         <tr>
             <th>Firstname</th>
             <th>Lastname</th>
-            <th>Birthday</th>
         </tr>
-        <tr th:each="student : ${students}">
-            <td th:text="${student.getFirstName()}"></td>
-            <td th:text="${student.getLastName()}"></td>
-            <td th:text="${student.getBirthday()}"></td>
+        <tr th:each="teacher : ${teachers}">
+            <td th:text="${teacher.getFirstName()}"></td>
+            <td th:text="${teacher.getLastName()}"></td>
             <!-- Buttons -->
             <td>
-                <a th:href="@{'/students/edit/' + ${student.getId()}}">
+                <a th:href="@{'/teachers/edit/' + ${teacher.getId()}}">
                     <input type="button" class="btn btn-light" value="Edit">
                 </a>
-                <a th:href="@{'/students/delete/' + ${student.getId()}}">
+                <a th:href="@{'/teachers/delete/' + ${teacher.getId()}}">
                     <input type="button" class="btn btn-danger" value="Delete">
                 </a>
             </td>

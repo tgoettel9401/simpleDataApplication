@@ -1,0 +1,18 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:insert="main.html"></div>
+<body>
+<div class="container-fluid" style="margin-top: 10px">
+    <h1 th:if="${teacher.getId() != null}" th:text="${teacher.getName()}"></h1>
+    <h1 th:if="${teacher.getId() == null}">Create new teacher</h1>
+
+    <form th:action="@{'/teachers/save'}" th:object="${teacher}" method="post">
+        <input type="hidden" name="id" th:value="${teacher.getId()}">
+        Firstname: <input type="text" class="input-group" name="firstName" th:value="${teacher.getFirstName()}"><br>
+        Lastname: <input type="text" class="input-group" name="lastName" th:value="${teacher.getLastName()}"> <br>
+        <a th:href="@{/teachers}"><input type="button" class="btn btn-warning" value="Cancel"></a>
+        <input type="submit" class="btn btn-primary" value="Save"> <br>
+    </form>
+    <div th:insert="footer.html">
+    </div>
+</div>
+</body>
