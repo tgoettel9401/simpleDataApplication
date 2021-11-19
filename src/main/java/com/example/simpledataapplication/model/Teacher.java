@@ -6,8 +6,8 @@ import java.util.List;
 @Entity
 public class Teacher {
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue
+    @Column(name = "id", nullable = false)
     private Long id;
 
     private String firstName;

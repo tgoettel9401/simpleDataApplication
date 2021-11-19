@@ -1,0 +1,33 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:insert="main.html"></div>
+<body>
+<div class="container-fluid" style="margin-top: 10px">
+    <h1>Courses</h1> <br>
+    <a th:href="@{/courses/create}"><input type="button" class="btn btn-primary" value="New"
+                                           style="margin-bottom: 10px"></a>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Teacher</th>
+            <th>Students</th>
+        </tr>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.getName()}"></td>
+            <td><a th:href="@{'/teachers/edit/' + ${course.getTeacher().getId()}}"
+                   th:text="${course.getTeacher().getName()}"></a></td>
+            <td th:text="${course.getStudents().size()}"></td>
+            <!-- Buttons -->
+            <td>
+                <a th:href="@{'/courses/edit/' + ${course.getId()}}">
+                    <input type="button" class="btn btn-light" value="Edit">
+                </a>
+                <a th:href="@{'/courses/delete/' + ${course.getId()}}">
+                    <input type="button" class="btn btn-danger" value="Delete">
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div th:insert="footer.html">
+    </div>
+</div>
+</body>

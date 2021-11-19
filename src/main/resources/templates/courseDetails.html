@@ -1,0 +1,31 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:insert="main.html"></div>
+<body>
+<div class="container-fluid" style="margin-top: 10px">
+    <h1 th:if="${course.getId() != null}" th:text="${course.getName()}"></h1>
+    <h1 th:if="${course.getId() == null}">Create new course</h1>
+
+    <form th:action="@{'/courses/save'}" th:object="${course}" method="post">
+        <input type="hidden" name="id" th:value="${course.getId()}">
+        <label for="name"> Firstname: </label>
+        <input id="name" name="name" type="text" class="input-group" th:value="${course.getName()}">
+        <br>
+        <label for="teacher">Course</label>
+        <select id="teacher" name="teacherId" class="form-control" th:value="${course.getTeacher()}">
+            <option th:each="teacher : ${teachers}" th:text="${teacher.getName()}"
+                    th:value="${teacher.getId()}"></option>
+        </select>
+        <br>
+        <label for="students">Students</label>
+        <select multiple id="students" name="studentIds" class="form-control" th:value="${course.getStudents()}">
+            <option th:each="student : ${students}" th:text="${student.getName()}" th:value="${student.getId()}"
+                    th:selected="${course.getStudents().contains(student)}"></option>
+        </select>
+        <br>
+        <a th:href="@{/students}"><input type="button" class="btn btn-warning" value="Cancel"></a>
+        <input type="submit" class="btn btn-primary" value="Save"> <br>
+    </form>
+    <div th:insert="footer.html">
+    </div>
+</div>
+</body>

@@ -6,7 +6,6 @@ import com.example.simpledataapplication.util.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -46,7 +45,7 @@ public class StudentController {
     }
 
     @GetMapping("/delete/{id}")
-    public RedirectView delete(RedirectAttributes attributes, @PathVariable("id") Long studentId) {
+    public RedirectView delete(@PathVariable("id") Long studentId) {
         studentRepository.deleteById(studentId);
         return new RedirectView("/students");
     }

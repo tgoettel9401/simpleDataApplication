@@ -1,3 +1,4 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:insert="main.html"></div>
 <body>
 <div class="container-fluid" style="margin-top: 10px">
@@ -6,9 +7,13 @@
 
     <form th:action="@{'/students/save'}" th:object="${student}" method="post">
         <input type="hidden" name="id" th:value="${student.getId()}">
-        Firstname: <input type="text" class="input-group" name="firstName" th:value="${student.getFirstName()}"><br>
-        Lastname: <input type="text" class="input-group" name="lastName" th:value="${student.getLastName()}"> <br>
-        Birthday: <input type="date" class="input-group" name="birthday" th:value="${student.getBirthday()}"> <br>
+        <label for="firstName">Firstname</label>
+        <input type="text" id="firstName" name="firstName" class="input-group" th:value="${student.getFirstName()}">
+        <br>
+        <label for="lastName">Lastname</label>
+        <input type="text" id="lastName" name="lastName" class="input-group" th:value="${student.getLastName()}"> <br>
+        <label for="birthday">class="input-group" </label>
+        <input type="date" id="birthday" name="birthday" class="input-group" th:value="${student.getBirthday()}"> <br>
         <a th:href="@{/students}"><input type="button" class="btn btn-warning" value="Cancel"></a>
         <input type="submit" class="btn btn-primary" value="Save"> <br>
     </form>

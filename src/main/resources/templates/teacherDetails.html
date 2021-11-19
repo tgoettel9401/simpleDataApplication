@@ -7,8 +7,10 @@
 
     <form th:action="@{'/teachers/save'}" th:object="${teacher}" method="post">
         <input type="hidden" name="id" th:value="${teacher.getId()}">
-        Firstname: <input type="text" class="input-group" name="firstName" th:value="${teacher.getFirstName()}"><br>
-        Lastname: <input type="text" class="input-group" name="lastName" th:value="${teacher.getLastName()}"> <br>
+        <label for="firstName">Firstname</label>
+        <input type="text" name="firstName" id="firstName" class="input-group" th:value="${teacher.getFirstName()}"><br>
+        <label for="lastName">Lastname</label>
+        <input type="text" id="lastName" name="lastName" class="input-group" th:value="${teacher.getLastName()}"> <br>
         <a th:href="@{/teachers}"><input type="button" class="btn btn-warning" value="Cancel"></a>
         <input type="submit" class="btn btn-primary" value="Save"> <br>
     </form>
