@@ -1,5 +1,6 @@
 package com.example.simpledataapplication.controller;
 
+import com.example.simpledataapplication.controller.transferObjects.CourseRequest;
 import com.example.simpledataapplication.model.Course;
 import com.example.simpledataapplication.model.Teacher;
 import com.example.simpledataapplication.repository.CourseRepository;

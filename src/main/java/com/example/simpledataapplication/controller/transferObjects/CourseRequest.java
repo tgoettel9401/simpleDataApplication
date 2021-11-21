@@ -1,4 +1,4 @@
-package com.example.simpledataapplication.controller;
+package com.example.simpledataapplication.controller.transferObjects;
 
 import lombok.Data;
 
